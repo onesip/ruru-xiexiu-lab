@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#ff4f87" />
+<meta name="description" content="如如邪修研究所：把互联网野路子从电子坟场里捞出来，翻译成人话，顺手把原帖也放好。" />
+<title>如如邪修研究所｜互联网野路子统一收编</title>
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="noise"></div>
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+<header>
+  <div class="doodle">邪门<br>但省事</div>
+  <nav class="nav shell">
+    <div class="brand"><span class="brand-mark">邪</span><span>如如邪修研究所<small>INTERNET WILD TRICKS ARCHIVE</small></span></div>
+    <div class="nav-actions"><button class="tiny-btn" id="addBtn">＋又捡到一个</button><button class="tiny-btn" id="randomTop">🎲 随机渡劫</button></div>
+  </nav>
+  <section class="hero shell">
+    <div>
+      <h1>别让收藏夹继续当<em>电子坟场</em>。</h1>
+      <p class="hero-copy">这里收编互联网野路子：给你<strong>翻译成人话</strong>、分门派、留原帖。能省事就抄作业；涉及眼睛、生肉和插座，先把冲动放下。</p>
+      <div class="search-box"><span>🔍</span><input id="searchInput" placeholder="你今天又遇到什么破事？例：妆卡粉 / 不想洗碗 / 微信文件过期" /><kbd>Ctrl K</kbd></div>
+      <div class="hero-buttons"><button class="btn primary" id="focusSearch">我现在就有破事</button><button class="btn secondary" id="browseBtn">先随便逛逛</button><button class="btn lime" id="randomBtn">让命运替我作妖</button></div>
+    </div>
+    <aside class="hero-card">
+      <div class="hero-number" id="heroCount">65</div><h2>条在逃邪修<br>已被统一收编</h2>
+      <div class="stat-row"><div class="stat"><b id="schoolCount">10</b><span>野生门派</span></div><div class="stat"><b id="linkCount">65</b><span>原帖入口</span></div><div class="stat"><b id="triedCount">0</b><span>你的实测</span></div><div class="stat"><b>0</b><span>凭空瞎编</span></div></div>
+      <p>严谨不是板着脸。该核验的核验，该玩梗的玩梗。</p>
+    </aside>
+  </section>
+</header>
+<main class="shell">
+  <section class="quick-section">
+    <div class="quick-title">不想组织语言？按精神状态找：</div>
+    <div class="quick-chips">
+      <button class="quick-chip" data-quick="美食邪修">我饿了但懒得像个人</button>
+      <button class="quick-chip" data-quick="美妆邪修">脸今天又不听话</button>
+      <button class="quick-chip" data-quick="修图/拍摄邪修">照片像AI替我活着</button>
+      <button class="quick-chip" data-quick="手工/Cos邪修">想手搓一个奇迹</button>
+      <button class="quick-chip" data-quick="生活邪修">日子过得需要外挂</button>
+      <button class="quick-chip" data-quick="随机">什么都别问，随机发疯</button>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <div class="catalog-head"><div><h2>野路子藏经阁</h2><p>搜得到、看得懂、一点就回原帖，不再让白屏消耗你的人生。收藏夹终于开始交房租。</p></div><div class="result-pill" id="resultText">显示 65 / 65 篇</div></div>
+    <div class="filters">
+      <div class="filter-row" id="categoryFilters"></div>
+      <div class="filter-row">
+        <button class="filter secondary active" data-view="all">全都端上来</button>
+        <button class="filter secondary" data-view="watch">能直接看原帖</button>
+        <button class="filter secondary" data-view="caution">先别梭哈</button>
+        <button class="filter secondary" data-view="tried">我试过的</button>
+        <select id="sortSelect"><option value="order">按收藏顺序</option><option value="category">按门派</option><option value="risk">按上头程度</option></select>
+      </div>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+    <div class="empty hide" id="emptyState"><strong>没搜到，互联网暂时也不会。</strong><p>换个更短的词，或者亲自新增一条，让数据库开始替你打工。</p><button class="btn lime" id="emptyAdd">我来投喂</button></div>
+  </section>
+
+  <section class="law">
+    <div><h2>本站<br>基本法</h2><p>抽象不等于没脑子。我们只是把说明书写得像活人。</p></div>
+    <div class="law-grid">
+      <article class="law-card"><b>01</b><h3>先说人话</h3><p>不把“标题级整理完成”怼用户脸上。先告诉你这条到底解决什么破事。</p></article>
+      <article class="law-card"><b>02</b><h3>可以邪，别刑</h3><p>眼睛、皮肤、生肉、刀具、电器：统一进入“别一上头就梭哈”专区。</p></article>
+      <article class="law-card"><b>03</b><h3>原作者不隐身</h3><p>每条都保留作者和原帖。我们负责整理，不负责把别人的功德占为己有。</p></article>
+    </div>
+  </section>
+</main>
+<footer><div class="footer-in shell"><div><strong>如如邪修研究所 · V4</strong><p>互联网没有白收藏的帖子，只有还没被整理的赛博遗产。</p></div><div class="footer-actions"><button id="exportBtn">导出我的实测</button><button id="importBtn">导入更新</button><input id="fileInput" type="file" accept="application/json" hidden><a id="boardLink" target="_blank" rel="noreferrer">回收藏夹考古 ↗</a></div></div></footer>
+
+<dialog class="dialog" id="detailDialog"><button class="close" data-close>×</button><div id="detailContent"></div></dialog>
+<dialog class="dialog" id="addDialog"><button class="close" data-close>×</button><form class="add-form" id="addForm"><h2>又捡到一个邪修</h2><p>先扔进来，后面再慢慢审。互联网垃圾分类，从我做起。</p><label>标题<input name="title" required placeholder="它到底在邪修什么"></label><label>作者<input name="author" placeholder="不记得也行"></label><label>门派<select name="category"><option>美食邪修</option><option>美妆邪修</option><option>生活邪修</option><option>修图/拍摄邪修</option><option>手工/Cos邪修</option><option>穿搭/发型邪修</option><option>数码邪修</option><option>园艺邪修</option></select></label><label>原帖链接<input name="url" type="url" placeholder="https://www.xiaohongshu.com/..."></label><label>你记得的关键词<input name="tags" placeholder="用逗号隔开"></label><label>先写两句<textarea name="note" placeholder="这玩意解决什么问题？你试过没有？"></textarea></label><button class="btn primary" type="submit">收编它</button></form></dialog>
+<div class="toast" id="toast"></div>
+<script src="./data-1.js"></script>
+<script src="./data-2.js"></script>
+<script src="./data-3.js"></script>
+<script src="./data-4.js"></script>
+<script src="./data-5.js"></script>
+<script src="./data-6.js"></script>
+<script src="./data-7.js"></script>
+<script src="./data-8.js"></script>
+<script src="./data-9.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

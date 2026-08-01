@@ -1,0 +1,5 @@
+{
+  "build": "stable-iphone-20260801-2132",
+  "commit": "305b0be621771432f746ad6323337cdabb7bc61c",
+  "notes": "Removed the mobile performance stylesheet and restored the last known working iPhone layout. Mobile Xiaohongshu links use video_feed only."
+}

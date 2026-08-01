@@ -1,0 +1,2 @@
+Force Vercel production redeploy at 2026-08-01 21:29 Europe/Amsterdam.
+Latest intended production commit before this trigger: 444f7bf323d21f052cd22746a549c76230d12e45

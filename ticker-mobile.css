@@ -1,0 +1,57 @@
+/* Mobile-safe infinite ticker.
+   Uses a max-content flex row and GPU transform so iOS/Android browsers
+   calculate the travelling width correctly. */
+.ticker {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+}
+
+.ticker-track {
+  display: flex !important;
+  width: max-content;
+  min-width: max-content;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 9px 0;
+  animation: ruru-mobile-marquee 28s linear infinite !important;
+  -webkit-animation: ruru-mobile-marquee 28s linear infinite !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ticker-track span {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin-right: 54px;
+}
+
+@keyframes ruru-mobile-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@-webkit-keyframes ruru-mobile-marquee {
+  from { -webkit-transform: translate3d(0, 0, 0); }
+  to { -webkit-transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 720px) {
+  .ticker-track {
+    padding: 8px 0;
+    font-size: 13px;
+    animation-duration: 20s !important;
+    -webkit-animation-duration: 20s !important;
+  }
+
+  .ticker-track span {
+    margin-right: 38px;
+  }
+}

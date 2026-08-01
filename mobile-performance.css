@@ -1,0 +1,35 @@
+/* Mobile performance patch: keep the look, cut expensive paint/layout work. */
+@media (max-width: 768px) {
+  /* SVG turbulence over the entire viewport is expensive on mobile GPUs. */
+  .noise { display: none !important; }
+
+  /* Skip painting cards that are far below the viewport. */
+  .card {
+    content-visibility: auto;
+    contain-intrinsic-size: 410px;
+    contain: layout paint style;
+  }
+  .card-grid { contain: layout style; }
+
+  /* Backdrop blur is costly and unnecessary on small screens. */
+  .dialog::backdrop,
+  .xhs-sheet-backdrop {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Keep only the ticker on the compositor. */
+  .ticker-track {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Avoid extra large off-screen shadows being repainted while scrolling. */
+  .card:hover { transform: none; box-shadow: none; }
+  .hero-card { box-shadow: 6px 7px 0 var(--purple); }
+  .quick-section { box-shadow: 4px 5px 0 var(--ink); }
+
+  /* Reduce layout work during long-page scrolling. */
+  .law, footer { content-visibility: auto; contain-intrinsic-size: 520px; }
+}

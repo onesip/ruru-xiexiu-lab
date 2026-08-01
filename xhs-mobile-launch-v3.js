@@ -27,7 +27,6 @@
 
     document.addEventListener('visibilitychange', watch);
     window.addEventListener('pagehide', leave, { once: true });
-
     window.location.href = `xhsdiscover://video_feed/${noteId}?sourceID=explore`;
 
     timer = setTimeout(() => {
@@ -36,10 +35,15 @@
     }, 1800);
   };
 
+  const renameOne = (el, text) => {
+    if (el && el.textContent !== text) el.textContent = text;
+  };
+
   const renameOpeners = (root = document) => {
-    root.querySelectorAll('.watch-btn').forEach(el => { el.textContent = '视频流开演 ↗'; });
-    root.querySelectorAll('.direct-watch').forEach(el => { el.textContent = '🎬 视频流开演'; });
-    root.querySelectorAll('.open-external').forEach(el => { el.textContent = '立刻进视频流 ↗'; });
+    if (!root.querySelectorAll) return;
+    root.querySelectorAll('.watch-btn').forEach(el => renameOne(el, '视频流开演 ↗'));
+    root.querySelectorAll('.direct-watch').forEach(el => renameOne(el, '🎬 视频流开演'));
+    root.querySelectorAll('.open-external').forEach(el => renameOne(el, '立刻进视频流 ↗'));
   };
 
   document.addEventListener('click', (event) => {
@@ -56,7 +60,20 @@
     openVideoFeed(noteId, href);
   }, true);
 
-  renameOpeners();
-  const observer = new MutationObserver(() => renameOpeners());
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  renameOpeners(document);
+
+  // Only inspect newly inserted element nodes. Text changes are ignored, so this
+  // cannot trigger the recursive mutation loop that froze iPhone Safari.
+  const observer = new MutationObserver((records) => {
+    for (const record of records) {
+      for (const node of record.addedNodes) {
+        if (node.nodeType !== 1) continue;
+        if (node.matches?.('.watch-btn')) renameOne(node, '视频流开演 ↗');
+        if (node.matches?.('.direct-watch')) renameOne(node, '🎬 视频流开演');
+        if (node.matches?.('.open-external')) renameOne(node, '立刻进视频流 ↗');
+        renameOpeners(node);
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 })();
